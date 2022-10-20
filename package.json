@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "engines": {
-    "node":"16.16.0"
+    "node": "16.16.0"
   },
   "scripts": {
     "start:dev": "concurrently \"cd server && npm run server\"  \"cd client && npm run build\"",
@@ -22,7 +22,7 @@
     "if-env": "^1.0.4"
   },
   "devDependencies": {
-    "concurrently": "^5.2.0",
+    "concurrently": "^5.3.0",
     "nodemon": "^2.0.4"
   }
 }
