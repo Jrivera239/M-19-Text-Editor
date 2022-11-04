@@ -2,43 +2,42 @@ import { openDB } from 'idb';
 import 'regenerator-runtime/runtime';
 
 const initdb = async () =>
-  openDB('jate', 1, {
+  openDB("tbte", 1, {
     upgrade(db) {
-      if (db.objectStoreNames.contains('jate')) {
-        console.log('jate database already exists');
+      if (db.objectStoreNames.contains("tbte")) {
+        console.log("tbte database already exists");
         return;
       }
-      db.createObjectStore('jate', { keyPath: 'id', autoIncrement: true });
-      console.log('jate database created');
+      db.createObjectStore("tbte", { keyPath: "id", autoIncrement: true });
+      console.log("tbte database created");
     },
-  }
-);
+  });
 
 // TODO: Add logic to a method that accepts some content and adds it to the database
 
-  console.log('Put to the database');
-  const contactDb = await openDB('jate_db', 1);
-  const tx = contactDb.transaction('jate_db', 'readwrite');
-  const store = tx.objectStore('jate');
-  
+export const putDb = async (content) => {
+  console.log("Update Database");
+
+  const textDb = await openDB("tbte", 1);
+  const tx = textDb.transaction("tbte", "readwrite");
+  const store = tx.objectStore("tbte");
   const request = store.put({content: content });
+
   const result = await request;
   console.log('🚀 - data saved to the database', result);
+};
 
 // TODO: Add logic for a method that gets all the content from the database
 
 export const getDb = async () => {
-  console.log('GET from the database');
-  
-const contactDb = await openDB('jate_db', 1);
-const tx = contactDb.transaction('jate_db', 'readonly');
-const store = tx.objectStore('jate');
-// gets all data from database
-const request = store.getAll();
-// confirms request
-const result = await request;
-console.log('result.value', result);
-return result;
+  console.log("GETALL From database");
+
+  const textDb = await openDB("tbte", 1);
+  const tx = textDb.transaction("tbte", "readonly");
+  const store = tx.objectStore("tbte");
+  const request = store.getAll();
+  const result = await request;
+  console.log("result: ", result);
 };
 
 initdb();

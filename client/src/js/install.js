@@ -10,6 +10,7 @@ window.addEventListener('beforeinstallprompt', (event) => {
 butInstall.addEventListener('click', async () => {
     event.promp();
     butInstall.setAttribute("disable",true);
+    butInstall.textContent = "Installed";
 });
 });
 
